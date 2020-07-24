@@ -1,17 +1,9 @@
 import React from "react"
-import { useStaticQuery } from "gatsby"
 import { css } from "theme-ui"
+import { useSiteMetadata } from "../hooks/use-site-metadata"
 
 const Footer = () => {
-  const data = useStaticQuery(graphql`
-    query AuthorQuery {
-      site {
-        siteMetadata {
-          author
-        }
-      }
-    }
-  `)
+  const { author } = useSiteMetadata()
 
   return (
     <footer
@@ -20,7 +12,7 @@ const Footer = () => {
         pt: 3,
       })}
     >
-      © 2020 {data.site.siteMetadata.author}.
+      © 2020 {author}.
     </footer>
   )
 }
